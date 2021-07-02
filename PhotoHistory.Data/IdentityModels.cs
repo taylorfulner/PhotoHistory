@@ -33,6 +33,7 @@ namespace PhotoHistory.Data
         }
 
         public DbSet<Photo> Photos { get; set; }
+        public DbSet<Tag> Tags { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

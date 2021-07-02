@@ -8,6 +8,8 @@ namespace PhotoHistory.Models
 {
     public class TagEdit
     {
+        public int TagId { get; set; }
+
         public string TagName { get; set; }
 
         public string TagType { get; set; }
