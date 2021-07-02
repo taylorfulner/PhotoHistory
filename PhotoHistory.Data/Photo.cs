@@ -27,9 +27,9 @@ namespace PhotoHistory.Data
         public Guid AdminId { get; set; }
 
         [Required]
-        public DateTime PhotoUploadDate { get; set; }
+        public DateTimeOffset PhotoUploadDate { get; set; }
 
-        public virtual List<Tag> Tags { get; set; }
+        public virtual List<PhotoTag> Tags { get; set; }
 
     }
 }

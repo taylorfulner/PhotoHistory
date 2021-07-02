@@ -23,8 +23,8 @@ namespace PhotoHistory.Models
         [Display(Name = "Uploaded By")]
         public Guid AdminId { get; set; }
 
-        public DateTime PhotoUploadDate { get; set; }
+        public DateTimeOffset PhotoUploadDate { get; set; }
 
-        public virtual List<Tag> Tags { get; set; }
+        public virtual List<TagList> Tags { get; set; }
     }
 }

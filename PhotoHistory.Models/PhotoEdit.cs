@@ -8,6 +8,8 @@ namespace PhotoHistory.Models
 {
     public class PhotoEdit
     {
+        public int PhotoId { get; set; }
+
         public string PhotoName { get; set; }
 
         public string PhotoDesc { get; set; }
