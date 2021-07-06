@@ -25,6 +25,7 @@ namespace PhotoHistory.Services
                 PhotoName = model.PhotoName,
                 PhotoDesc = model.PhotoDesc,
                 PhotoDate = model.PhotoDate,
+                PhotoStorageLocation = model.PhotoStorageLocation,
                 PhotoUploadDate = DateTimeOffset.UtcNow
             };
 
@@ -45,7 +46,8 @@ namespace PhotoHistory.Services
                         e => new PhotoList
                         {
                             PhotoName = e.PhotoName,
-                            PhotoDate = e.PhotoDate
+                            PhotoDate = e.PhotoDate,
+                            PhotoStorageLocation = e.PhotoStorageLocation
                         }
                     );
                 return query.ToArray();

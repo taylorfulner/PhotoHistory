@@ -34,6 +34,7 @@ namespace PhotoHistory.Data
 
         public DbSet<Photo> Photos { get; set; }
         public DbSet<Tag> Tags { get; set; }
+        public DbSet<PhotoTag> PhotoTags { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

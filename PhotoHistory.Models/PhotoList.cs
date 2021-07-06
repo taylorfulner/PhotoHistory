@@ -8,8 +8,12 @@ namespace PhotoHistory.Models
 {
     public class PhotoList
     {
+        public int PhotoId { get; set; }
+
         public string PhotoName { get; set; }
 
         public DateTime PhotoDate { get; set; }
+
+        public string PhotoStorageLocation { get; set; }
     }
 }

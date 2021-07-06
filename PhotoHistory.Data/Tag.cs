@@ -18,6 +18,6 @@ namespace PhotoHistory.Data
         [Required]
         public string TagType { get; set; }
 
-        public virtual List<Photo> Photos { get; set; }
+        public virtual List<PhotoTag> Photos { get; set; }
     }
 }

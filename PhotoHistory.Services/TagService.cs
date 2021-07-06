@@ -32,7 +32,7 @@ namespace PhotoHistory.Services
             }
         }
 
-        public IEnumerable<TagList> GetTag()
+        public IEnumerable<TagList> GetTags()
         {
             using (var ctx = new ApplicationDbContext())
             {
