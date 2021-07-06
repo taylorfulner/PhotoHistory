@@ -41,6 +41,7 @@ namespace PhotoHistory.Services
                     .Select(
                         e => new TagList
                         {
+                            TagId = e.TagId,
                             TagName = e.TagName,
                             TagType = e.TagType
                         }
