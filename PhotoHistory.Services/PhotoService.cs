@@ -45,6 +45,7 @@ namespace PhotoHistory.Services
                     .Select(
                         e => new PhotoList
                         {
+                            PhotoId = e.PhotoId,
                             PhotoName = e.PhotoName,
                             PhotoDate = e.PhotoDate,
                             PhotoStorageLocation = e.PhotoStorageLocation
@@ -69,7 +70,8 @@ namespace PhotoHistory.Services
                         PhotoDesc = entity.PhotoDesc,
                         PhotoDate = entity.PhotoDate,
                         PhotoUploadDate = entity.PhotoUploadDate,
-                        AdminId = entity.AdminId,
+                        AdminId = _adminId,
+                        PhotoStorageLocation = entity.PhotoStorageLocation,
                         Tags = entity.Tags
                         .Select(x => new TagList()
                         {
