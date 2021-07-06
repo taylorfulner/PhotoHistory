@@ -247,10 +247,14 @@
     <Content Include="Views\Tag\Details.cshtml" />
     <Content Include="Views\Tag\Edit.cshtml" />
     <Content Include="Views\Tag\Delete.cshtml" />
+    <Content Include="Views\PhotoTag\Index.cshtml" />
+    <Content Include="Views\PhotoTag\Create.cshtml" />
+    <Content Include="Views\PhotoTag\Details.cshtml" />
+    <Content Include="Views\PhotoTag\Edit.cshtml" />
+    <Content Include="Views\PhotoTag\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\PhotoTag\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
