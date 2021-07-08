@@ -29,7 +29,7 @@ namespace PhotoHistory.Data
         [Required]
         public DateTimeOffset PhotoUploadDate { get; set; }
 
-        public virtual List<PhotoTag> Tags { get; set; }
+        public virtual List<PhotoTag> Tags { get; set; } = new List<PhotoTag>();
 
     }
 }

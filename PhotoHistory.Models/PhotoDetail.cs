@@ -25,6 +25,6 @@ namespace PhotoHistory.Models
 
         public DateTimeOffset PhotoUploadDate { get; set; }
 
-        public virtual List<TagList> Tags { get; set; }
+        public virtual List<TagList> Tags { get; set; } = new List<TagList>();
     }
 }

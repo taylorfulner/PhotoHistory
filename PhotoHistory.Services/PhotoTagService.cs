@@ -65,7 +65,7 @@ namespace PhotoHistory.Services
                     new PhotoTagDetail
                     {
                         PhotoTagId = entity.PhotoTagId,
-                        PhotoId = entity.TagId,
+                        PhotoId = entity.PhotoId,
                         Photo = new PhotoList
                         {
                             PhotoName = entity.Photo.PhotoName,
