@@ -10,7 +10,6 @@
 
 footer {
     text-align: center;
-    background-color: bisque;
 }
 
 #sidebar {
@@ -30,7 +29,6 @@ footer {
 }
 
 .navbar-fixed-bottom {
-    background-color: black;
     width: 100%;
 }
 
