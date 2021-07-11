@@ -9,36 +9,52 @@
     @RenderSection("scripts", required: false)
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link rel="stylesheet" type="text/css" href="~/Custom/BootstrapOverride.css">
+    <link rel="stylesheet" type="text/css" href="~/Custom/OverrideBootstrap.css" />
+    <script src="~/Custom/BootstrapOverride.js"></script>
 </head>
 
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container" id="top-nav">
+            <nav class="navbar-expand-lg navbar-light bg-light">
+            </nav>
             <div>
                 @Html.ActionLink("Traced", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div >
+
+            <div>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
-    </div>
+    </nav>
 
-    <div class="navbar navbar-left navbar-toggle" id="sidebar">
-        <div class="container">
-            <div>
-                <ul id="sidebar-links">
-                    <li>@Html.ActionLink("Photos", "Index", "Photo")</li>
-                    <li>@Html.ActionLink("Tags", "Index", "Tag")</li>
-                </ul>
+    <div class="wrapper">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Menu</h3>
             </div>
-        </div>
+            <ul class="list-unstyled components">
+                <li>
+                    @Html.ActionLink("Home", "Index", "Home")
+                </li>
+                <li>
+                    @Html.ActionLink("Photos", "Index", "Photo")
+                </li>
+                <li>
+                    @Html.ActionLink("Tags", "Index", "Tag")
+                </li>
+            </ul>
+
+        </nav>
     </div>
 
-    <div class="container body-content navbar-fixed-bottom">
+    <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
+    </div>
+
+    <div>
+        <footer class="navbar-fixed-bottom">
             <p>&copy; @DateTime.Now.Year - <a href="taylorf.com" target="_blank">TaylorF.com</a></p>
         </footer>
     </div>

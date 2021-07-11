@@ -18,10 +18,7 @@ namespace PhotoHistory.Models
 
         public DateTime PhotoDate { get; set; }
 
-        public string PhotoStorageLocation { get; set; }
-
-        [Display(Name = "Uploaded By")]
-        public Guid AdminId { get; set; }
+        public string Image { get; set; }
 
         public DateTimeOffset PhotoUploadDate { get; set; }
 

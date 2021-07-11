@@ -3,6 +3,7 @@ using PhotoHistory.Models;
 using PhotoHistory.Services;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -26,11 +27,17 @@ namespace PhotoHistory.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(PhotoCreate model)
+        public ActionResult Create(PhotoCreate model, HttpPostedFileBase file)
         {
             if (!ModelState.IsValid) return View(model);
 
             var service = CreatePhotoService();
+
+            if (file != null)
+            {
+                string path = Path.Combine(Server.MapPath("~/Content/Photos"), Path.GetFileName(file.FileName));
+                file.SaveAs(path);
+            }
 
             if (service.CreatePhoto(model))
             {

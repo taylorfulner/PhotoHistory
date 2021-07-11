@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace PhotoHistory.Services
 {
@@ -21,18 +22,17 @@ namespace PhotoHistory.Services
         {
             var entity = new Photo()
             {
-                AdminId = _adminId,
                 PhotoName = model.PhotoName,
                 PhotoDesc = model.PhotoDesc,
                 PhotoDate = model.PhotoDate,
-                PhotoStorageLocation = model.PhotoStorageLocation,
+                Image = model.Image,
                 PhotoUploadDate = DateTimeOffset.UtcNow
             };
 
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Photos.Add(entity);
-                return ctx.SaveChanges() == 1;
+                return ctx.SaveChanges() == 1; //add error here
             }
         }
 
@@ -48,7 +48,7 @@ namespace PhotoHistory.Services
                             PhotoId = e.PhotoId,
                             PhotoName = e.PhotoName,
                             PhotoDate = e.PhotoDate,
-                            PhotoStorageLocation = e.PhotoStorageLocation
+                            Image = e.Image
                         }
                     );
                 return query.ToArray();
@@ -70,8 +70,7 @@ namespace PhotoHistory.Services
                         PhotoDesc = entity.PhotoDesc,
                         PhotoDate = entity.PhotoDate,
                         PhotoUploadDate = entity.PhotoUploadDate,
-                        AdminId = _adminId,
-                        PhotoStorageLocation = entity.PhotoStorageLocation,
+                        Image = entity.Image,
                         Tags = entity.Tags
                         .Select(x => new TagList()
                         {

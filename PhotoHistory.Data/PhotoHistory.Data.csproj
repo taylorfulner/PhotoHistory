@@ -55,19 +55,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202107010001310_InitialCreate.cs" />
-    <Compile Include="Migrations\202107010001310_InitialCreate.Designer.cs">
-      <DependentUpon>202107010001310_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202107052252404_first.cs" />
-    <Compile Include="Migrations\202107052252404_first.Designer.cs">
-      <DependentUpon>202107052252404_first.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202107060042521_photoupdate.cs" />
-    <Compile Include="Migrations\202107060042521_photoupdate.Designer.cs">
-      <DependentUpon>202107060042521_photoupdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Photo.cs" />
     <Compile Include="PhotoTag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -76,17 +63,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202107010001310_InitialCreate.resx">
-      <DependentUpon>202107010001310_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202107052252404_first.resx">
-      <DependentUpon>202107052252404_first.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202107060042521_photoupdate.resx">
-      <DependentUpon>202107060042521_photoupdate.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

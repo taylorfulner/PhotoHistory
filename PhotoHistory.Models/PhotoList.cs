@@ -14,6 +14,6 @@ namespace PhotoHistory.Models
 
         public DateTime PhotoDate { get; set; }
 
-        public string PhotoStorageLocation { get; set; }
+        public string Image { get; set; }
     }
 }
