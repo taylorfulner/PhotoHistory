@@ -40,6 +40,10 @@
     width: 100%;
 }
 
+.detail-photo {
+    width: 95%;
+}
+
 @media (max-width: 768px) {
     #account-icon {
         float: right;
