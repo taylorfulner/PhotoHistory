@@ -43,19 +43,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PhotoStorageLocation)
+            @Html.DisplayNameFor(model => model.Image)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PhotoStorageLocation)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AdminId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AdminId)
+            <img alt="Image" src="@Url.Content("~/UploadedPhotos/" + @Html.DisplayFor(modelItem => Model.Image))">
         </dd>
 
         <dt>

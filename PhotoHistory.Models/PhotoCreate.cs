@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
+using System.ComponentModel.DataAnnotations.Schema;
+using PhotoHistory.Data;
 
 namespace PhotoHistory.Models
 {
@@ -17,5 +20,7 @@ namespace PhotoHistory.Models
         public DateTime PhotoDate { get; set; }
 
         public string Image { get; set; }
+
+        public virtual List<PhotoTag> Tags { get; set; } = new List<PhotoTag>();
     }
 }

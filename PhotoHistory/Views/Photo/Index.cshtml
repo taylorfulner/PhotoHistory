@@ -1,4 +1,6 @@
-﻿@model IEnumerable<PhotoHistory.Models.PhotoList>
+﻿@using System.Linq;
+
+@model IEnumerable<PhotoHistory.Models.PhotoList>
 
 @{
     ViewBag.Title = "Index";
@@ -32,27 +34,33 @@
         <th>
             Photo Date
         </th>
+        <th>
+            Tags
+        </th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                <img src="@Html.DisplayFor(modelItem => item.Image)" width="50" />
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhotoName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhotoDate)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.PhotoId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.PhotoId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.PhotoId })
-            </td>
-        </tr>
+<tr>
+    <td>
+        <img alt="Image" src="@Url.Content("~/UploadedPhotos/" + @Html.DisplayFor(modelItem => item.Image))" width="50">
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PhotoName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PhotoDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tags)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.PhotoId }) |
+        @Html.ActionLink("Details", "Details", new { id = item.PhotoId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.PhotoId })
+    </td>
+</tr>
     }
 
 </table>

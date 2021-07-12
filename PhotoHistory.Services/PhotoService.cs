@@ -32,7 +32,7 @@ namespace PhotoHistory.Services
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Photos.Add(entity);
-                return ctx.SaveChanges() == 1; //add error here
+                return ctx.SaveChanges() == 1; //add error here if image isn't input
             }
         }
 

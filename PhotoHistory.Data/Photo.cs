@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PhotoHistory.Data
 {
@@ -21,6 +23,9 @@ namespace PhotoHistory.Data
 
         [Required]
         public string Image { get; set; }
+
+        [NotMapped]
+        public HttpPostedFileBase User_image_data { get; set; }
 
         [Required]
         public DateTimeOffset PhotoUploadDate { get; set; }

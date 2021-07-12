@@ -27,25 +27,27 @@ namespace PhotoHistory.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(PhotoCreate model, HttpPostedFileBase file)
+        public ActionResult Create(PhotoCreate model)
         {
-            if (!ModelState.IsValid) return View(model);
-
             var service = CreatePhotoService();
 
-            if (file != null)
+            if (ModelState.IsValid)
             {
-                string path = Path.Combine(Server.MapPath("~/Content/Photos"), Path.GetFileName(file.FileName));
-                file.SaveAs(path);
+                if (Request.Files.Count > 0)
+                {
+                    HttpPostedFileBase file = Request.Files[0];
+                    if (file.ContentLength > 0)
+                    {
+                        var fileName = Path.GetFileName(file.FileName);
+                        var nameOnly = Path.GetFileName(file.FileName);
+                        model.Image = Path.Combine(Server.MapPath("~/UploadedPhotos"), fileName.TrimStart('/'));
+                        file.SaveAs(model.Image);
+                        model.Image = nameOnly;
+                        service.CreatePhoto(model);
+                    }
+                    return RedirectToAction("Index");
+                }
             }
-
-            if (service.CreatePhoto(model))
-            {
-                TempData["SaveResult"] = "Photo was added successfully.";
-                return RedirectToAction("Index");
-            };
-
-            ModelState.AddModelError("", "Photo could not be added.");
 
             return View(model);
         }
