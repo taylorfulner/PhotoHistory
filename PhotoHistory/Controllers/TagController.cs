@@ -3,6 +3,7 @@ using PhotoHistory.Models;
 using PhotoHistory.Services;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -16,6 +17,7 @@ namespace PhotoHistory.Controllers
         {
             var service = CreateTagService();
             var model = service.GetTags();
+            ViewBag.TagNames = service.GetTagNames();
             return View(model);
         }
 
@@ -50,6 +52,8 @@ namespace PhotoHistory.Controllers
 
             return View(model);
         }
+
+
 
         public ActionResult Edit(int id)
         {

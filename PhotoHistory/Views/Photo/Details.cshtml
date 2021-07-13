@@ -1,4 +1,8 @@
-﻿@model PhotoHistory.Models.PhotoDetail
+﻿@using PhotoHistory.Services
+@using PhotoHistory.Data
+@using System.Collections.Generic;
+@using PhotoHistory.Models;
+@model PhotoHistory.Models.PhotoDetail
 
 @{
     ViewBag.Title = "Details";
@@ -63,12 +67,16 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Tags)
+            @*@Html.DisplayFor(model => model.Tags)*@
+            @foreach (var item in Model.Tags)
+            {
+                @item.TagName
+                <br>
+            }
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.PhotoId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

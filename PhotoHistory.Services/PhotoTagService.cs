@@ -89,6 +89,7 @@ namespace PhotoHistory.Services
                     .PhotoTags
                     .Single(e => e.PhotoTagId == model.PhotoTagId);
 
+                entity.PhotoTagId = model.PhotoTagId;
                 entity.PhotoId = model.PhotoId;
                 entity.TagId = model.TagId;
 

@@ -50,6 +50,23 @@ namespace PhotoHistory.Services
             }
         }
 
+        public IEnumerable<TagList> GetTagNames()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx
+                    .Tags
+                    .Select(
+                        e => new TagList
+                        {
+                            TagName = e.TagName
+                        }
+                    );
+                return query.ToArray();
+            }
+        }
+
+
         public TagDetail GetTagById(int id)
         {
             using (var ctx = new ApplicationDbContext())

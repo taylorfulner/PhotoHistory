@@ -72,12 +72,11 @@ namespace PhotoHistory.Services
                         PhotoUploadDate = entity.PhotoUploadDate,
                         Image = entity.Image,
                         Tags = entity.Tags
-                        //.Select(x => new TagList()
-                        //{
-                        //    TagName = x.Tag.TagName,
-                        //    TagType = x.Tag.TagType
-                        //}
-                        //).ToList()
+                        .Select(y => new TagList()
+                        {
+                            TagName = y.Tag.TagName
+                        }
+                        ).ToList()
                     };
             }
         }
