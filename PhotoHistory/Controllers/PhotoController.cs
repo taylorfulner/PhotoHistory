@@ -40,7 +40,7 @@ namespace PhotoHistory.Controllers
                     {
                         var fileName = Path.GetFileName(file.FileName);
                         var nameOnly = Path.GetFileName(file.FileName);
-                        model.Image = Path.Combine(Server.MapPath("~/UploadedPhotos"), fileName.TrimStart('/'));
+                        model.Image = Path.Combine(Server.MapPath("~/UploadedPhotos/"), fileName.TrimStart('/'));
                         file.SaveAs(model.Image);
                         model.Image = nameOnly;
                         service.CreatePhoto(model);
