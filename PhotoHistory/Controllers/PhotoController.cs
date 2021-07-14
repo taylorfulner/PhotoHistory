@@ -27,9 +27,11 @@ namespace PhotoHistory.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(PhotoCreate model)
+        public ActionResult Create(PhotoCreate photoModel, TagCreate tagModel, PhotoEdit photoId, TagEdit tagId, PhotoTagCreate photoTagModel)
         {
-            var service = CreatePhotoService();
+            var photoService = CreatePhotoService();
+            var tagService = CreateTagService();
+            var photoTagService = CreatePhotoTagService();
 
             if (ModelState.IsValid)
             {
@@ -38,18 +40,26 @@ namespace PhotoHistory.Controllers
                     HttpPostedFileBase file = Request.Files[0];
                     if (file.ContentLength > 0)
                     {
+
                         var fileName = Path.GetFileName(file.FileName);
                         var nameOnly = Path.GetFileName(file.FileName);
-                        model.Image = Path.Combine(Server.MapPath("~/UploadedPhotos/"), fileName.TrimStart('/'));
-                        file.SaveAs(model.Image);
-                        model.Image = nameOnly;
-                        service.CreatePhoto(model);
+                        photoModel.Image = Path.Combine(Server.MapPath("~/UploadedPhotos/"), fileName.TrimStart('/'));
+                        file.SaveAs(photoModel.Image);
+                        photoModel.Image = nameOnly;
+                        photoService.CreatePhoto(photoModel);
+                        tagService.CreateTag(tagModel);
+                        int newPhotoId = photoService.GetPhotoId(photoModel.Image);
+                        int newTagId = tagService.GetTagId(tagModel.TagName);
+                        
+                        //photoTagModel.PhotoId = photoId.PhotoId;//i need this to be the photo id of photomodel from photodetails?
+                        //photoTagModel.TagId = tagId.TagId;
+                        photoTagService.CreatePhotoTagBackground(newPhotoId, newTagId);
                     }
                     return RedirectToAction("Index");
                 }
             }
 
-            return View(model);
+            return View(photoModel);
         }
 
         public ActionResult Details(int id)
@@ -69,7 +79,8 @@ namespace PhotoHistory.Controllers
                 PhotoId = detail.PhotoId,
                 PhotoName = detail.PhotoName,
                 PhotoDesc = detail.PhotoDesc,
-                PhotoDate = detail.PhotoDate
+                PhotoDate = detail.PhotoDate,
+                Image = detail.Image
             };
 
             return View(model);
@@ -77,9 +88,13 @@ namespace PhotoHistory.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, PhotoEdit model)
+        public ActionResult Edit(int id, PhotoEdit model, PhotoCreate photoModel)
         {
             if (!ModelState.IsValid) return View(model);
+
+            var service = CreatePhotoService();
+            int newPhotoId = service.GetPhotoId(photoModel.Image);
+            model.PhotoId = newPhotoId;
 
             if (model.PhotoId != id)
             {
@@ -87,16 +102,16 @@ namespace PhotoHistory.Controllers
                 return View(model);
             }
 
-            var service = CreatePhotoService();
 
-            if (service.UpdatePhoto(model))
+            service.UpdatePhoto(model);
+            TempData["SaveResult"] = "Photo has been updated";
+            return RedirectToAction("Index");
+
+            if (!ModelState.IsValid)
             {
-                TempData["SaveResult"] = "Photo has been updated";
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Photo could not be updated");
+                return View();
             }
-
-            ModelState.AddModelError("", "Photo could not be updated");
-            return View();
         }
 
         [ActionName("Delete")]
@@ -125,8 +140,22 @@ namespace PhotoHistory.Controllers
         private PhotoService CreatePhotoService()
         {
             var adminId = Guid.Parse(User.Identity.GetUserId());
-            var service = new PhotoService(adminId);
-            return service;
+            var photoService = new PhotoService(adminId);
+            return photoService;
+        }
+        
+        private TagService CreateTagService()
+        {
+            var adminId = Guid.Parse(User.Identity.GetUserId());
+            var tagService = new TagService(adminId);
+            return tagService;
+        }
+
+        private PhotoTagService CreatePhotoTagService()
+        {
+            var adminId = Guid.Parse(User.Identity.GetUserId());
+            var photoTagService = new PhotoTagService(adminId);
+            return photoTagService;
         }
     }
 }

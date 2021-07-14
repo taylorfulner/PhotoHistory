@@ -10,16 +10,38 @@ namespace PhotoHistory.Services
 {
     public class PhotoTagService
     {
+        private readonly Guid _adminId;
+
+        public PhotoTagService(Guid adminId)
+        {
+            _adminId = adminId;
+        }
+
         public bool CreatePhotoTag(PhotoTagCreate model)
         {
-            var entity = new PhotoTag()
+                var entity = new PhotoTag()
                 {
                     PhotoId = model.PhotoId,
                     TagId = model.TagId
                 };
 
+                using (var ctx = new ApplicationDbContext())
+                {
+                    ctx.PhotoTags.Add(entity);
+                    return ctx.SaveChanges() == 1;
+                }
+        }
+
+        public bool CreatePhotoTagBackground(int photoId, int tagId)
+        {
             using (var ctx = new ApplicationDbContext())
             {
+                var entity = new PhotoTag()
+                {
+                    PhotoId = photoId,
+                    TagId = tagId
+                };
+
                 ctx.PhotoTags.Add(entity);
                 return ctx.SaveChanges() == 1;
             }

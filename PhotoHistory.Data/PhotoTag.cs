@@ -12,9 +12,11 @@ namespace PhotoHistory.Data
         [Key]
         public int PhotoTagId { get; set; }
 
+        [Display(Name = "Photo")]
         public int PhotoId { get; set; }
         public virtual Photo Photo { get; set; }
 
+        [Display(Name = "Tag")]
         public int TagId { get; set; }
         public virtual Tag Tag { get; set; }
     }

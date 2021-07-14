@@ -10,56 +10,62 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link rel="stylesheet" type="text/css" href="~/Custom/OverrideBootstrap.css" />
-    <script src="~/Custom/BootstrapOverride.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+
+        });
+    </script>
 </head>
 
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container" id="top-nav">
-            <nav class="navbar-expand-lg navbar-light bg-light">
-            </nav>
-            <div>
-                @Html.ActionLink("Traced", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
+        <nav class="navbar navbar-inverse navbar-fixed-top" id="nav-size">
+            <div class="container" id="top-nav">
+                <nav class="navbar-expand-lg navbar-light bg-light">
+                </nav>
+                <div>
+                </div>
 
-            <div>
-                @Html.Partial("_LoginPartial")
+                <div>
+                    @Html.Partial("_SidebarPartial")
+                    @Html.Partial("_LoginPartial")
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
     <div class="wrapper">
+        <div class="container body-content">
+            @RenderBody()
+
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>Menu</h3>
+                <h3>Bootstrap Sidebar</h3>
             </div>
+
             <ul class="list-unstyled components">
-                <li>
+                <li class="active">
                     @Html.ActionLink("Home", "Index", "Home")
                 </li>
                 <li>
                     @Html.ActionLink("Photos", "Index", "Photo")
                 </li>
                 <li>
-                    @Html.ActionLink("Tags", "Index", "Tag")
-                </li>
-                <li>
-                    @Html.ActionLink("Photo Tags", "Index", "PhotoTag")
+                    @Html.ActionLink("Delete Tag from Photo", "Index", "Tag/Index")
                 </li>
             </ul>
-
         </nav>
-    </div>
+            <hr />
+        </div>
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
     </div>
-
-    <div>
-        <footer class="navbar-fixed-bottom">
-            <p>&copy; @DateTime.Now.Year - <a href="taylorf.com" target="_blank">TaylorF.com</a></p>
-        </footer>
-    </div>
+        <div>
+            <footer>
+                <p>&copy; @DateTime.Now.Year - <a href="taylorf.com" target="_blank">TaylorF.com</a></p>
+            </footer>
+        </div>
 </body>
+
 </html>

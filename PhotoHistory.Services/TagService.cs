@@ -12,6 +12,8 @@ namespace PhotoHistory.Services
     {
         private readonly Guid _adminId;
 
+        public TagService() { }
+
         public TagService(Guid adminId)
         {
             _adminId = adminId;
@@ -47,6 +49,18 @@ namespace PhotoHistory.Services
                         }
                     );
                 return query.ToArray();
+            }
+        }
+
+        public int GetTagId(string tagName)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx
+                    .Tags
+                    .Single(e => e.TagName == tagName);
+
+                return entity.TagId;
             }
         }
 

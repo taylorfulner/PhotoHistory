@@ -255,9 +255,13 @@
     <Content Include="Views\PhotoTag\Details.cshtml" />
     <Content Include="Views\PhotoTag\Edit.cshtml" />
     <Content Include="Views\PhotoTag\Delete.cshtml" />
+    <Content Include="Views\Photo\TagCreatePartial.cshtml" />
+    <Content Include="Views\Photo\PhotoGrid.cshtml" />
+    <Content Include="Views\Shared\_SidebarPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="NewFolder1\" />
     <Folder Include="UploadedPhotos\" />
   </ItemGroup>
   <ItemGroup>

@@ -13,6 +13,8 @@ namespace PhotoHistory.Services
     {
         private readonly Guid _adminId;
 
+        public PhotoService() { }
+
         public PhotoService(Guid adminId)
         {
             _adminId = adminId;
@@ -81,6 +83,19 @@ namespace PhotoHistory.Services
             }
         }
 
+        public int GetPhotoId(string imageName)
+        {
+            
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx
+                    .Photos
+                    .Single(e => e.Image == imageName);
+
+                return entity.PhotoId;
+            }
+        }
+
         public bool UpdatePhoto(PhotoEdit model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -92,6 +107,8 @@ namespace PhotoHistory.Services
                 entity.PhotoName = model.PhotoName;
                 entity.PhotoDesc = model.PhotoDesc;
                 entity.PhotoDate = model.PhotoDate;
+                entity.Image = model.Image;
+
                 return ctx.SaveChanges() == 1;
             }
         }

@@ -1,4 +1,5 @@
-﻿using PhotoHistory.Models;
+﻿using Microsoft.AspNet.Identity;
+using PhotoHistory.Models;
 using PhotoHistory.Services;
 using System;
 using System.Collections.Generic;
@@ -114,9 +115,9 @@ namespace PhotoHistory.Controllers
 
         private PhotoTagService CreatePhotoTagService()
         {
-            //var userId = Guid.Parse(User.Identity.GetUserId()); don't need?
-            var service = new PhotoTagService();
-            return service;
+            var adminId = Guid.Parse(User.Identity.GetUserId());
+            var photoTagService = new PhotoTagService(adminId);
+            return photoTagService;
         }
     }
 }

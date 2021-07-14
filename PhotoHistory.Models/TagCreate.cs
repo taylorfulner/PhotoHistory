@@ -9,6 +9,7 @@ namespace PhotoHistory.Models
 {
     public class TagCreate
     {
+        public int TagId { get; }
         [Required]
         public string TagName { get; set; }
 

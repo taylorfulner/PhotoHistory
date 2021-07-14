@@ -15,10 +15,13 @@ namespace PhotoHistory.Data
         public int PhotoId { get; set; }
 
         [Required]
+        [Display(Name = "Photo Name")]
         public string PhotoName { get; set; }
 
+        [Display(Name = "Photo Description")]
         public string PhotoDesc { get; set; }
 
+        [Display(Name = "Photo Date")]
         public DateTime PhotoDate { get; set; }
 
         [Required]
@@ -28,6 +31,7 @@ namespace PhotoHistory.Data
         public HttpPostedFileBase User_image_data { get; set; }
 
         [Required]
+        [Display(Name = "Upload Date")]
         public DateTimeOffset PhotoUploadDate { get; set; }
 
         public virtual List<PhotoTag> Tags { get; set; } = new List<PhotoTag>();
