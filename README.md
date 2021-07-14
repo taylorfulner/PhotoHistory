@@ -1,64 +1,27 @@
 # Traced
 
-### A webpage to view your family history in photographs.
+#### A webpage to view your family history in photographs.
 
-### Visit the live Website (deployed on Azure) [here](https://traced.azurewebsites.net/)
+#### Visit the live Website (deployed on Azure) [here](https://traced.azurewebsites.net/)
+
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
+Recently, my dad scanned in a lot of old family photos from as early as the 1930s. He has the photos stored on a hard drive and does not want them to be pulled from the cloud. The application works through relative directories, so he can host the site and server from his home. Traced will be able to be shared to family members who can create accounts and view photos. Admin accounts can create, edit, and delete photos to keep the database as clean as possible.
 
 ## Getting Started
 
-### Dependencies
-
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
-
 ### Installing
 
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+Click on the green code button at the top right and select clone or download the zip file.
+It is easiest to use Visual Studio 2019 Community. Download VS free [HERE](https://visualstudio.microsoft.com/downloads/)
 
-### Executing program
-
-* How to run the program
-* Step-by-step bullets
-```
-code blocks for commands
-```
-
-## Help
-
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
 
 ## Authors
 
-Contributors names and contact info
-
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
+Created by Taylor Fulner at [TaylorF.com](taylorf.com)
 
 ## Version History
 
-* 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
 * 0.1
     * Initial Release
-
-## License
-
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
-
-## Acknowledgments
-
-Inspiration, code snippets, etc.
-* [awesome-readme](https://github.com/matiassingers/awesome-readme)
-* [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
-* [dbader](https://github.com/dbader/readme-template)
-* [zenorocha](https://gist.github.com/zenorocha/4526327)
-* [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
