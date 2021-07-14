@@ -46,6 +46,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,11 +55,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PhotoCreate.cs" />
+    <Compile Include="PhotoDetail.cs" />
+    <Compile Include="PhotoEdit.cs" />
+    <Compile Include="PhotoList.cs" />
+    <Compile Include="PhotoTagCreate.cs" />
+    <Compile Include="PhotoTagDetail.cs" />
+    <Compile Include="PhotoTagEdit.cs" />
+    <Compile Include="PhotoTagList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TagCreate.cs" />
+    <Compile Include="TagDetail.cs" />
+    <Compile Include="TagEdit.cs" />
+    <Compile Include="TagList.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PhotoHistory.Data\PhotoHistory.Data.csproj">
+      <Project>{8352E07E-1DD1-45C4-84EF-E5A0C94BCD8B}</Project>
+      <Name>PhotoHistory.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

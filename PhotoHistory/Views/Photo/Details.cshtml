@@ -1,0 +1,82 @@
+﻿@using PhotoHistory.Services
+@using PhotoHistory.Data
+@using System.Collections.Generic;
+@using PhotoHistory.Models;
+@model PhotoHistory.Models.PhotoDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PhotoDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PhotoId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhotoId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhotoName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhotoName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhotoDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhotoDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhotoDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhotoDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            <img alt="Image" src="@Url.Content("~/UploadedPhotos/" + @Html.DisplayFor(modelItem => Model.Image))" class="detail-photo">
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhotoUploadDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhotoUploadDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tags)
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.Tags)*@
+            @foreach (var item in Model.Tags)
+            {
+                @item.TagName
+                <br>
+            }
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,42 @@
+﻿@model PhotoHistory.Models.TagDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TagDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TagId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TagId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TagName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TagName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TagType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TagType)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TagId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
